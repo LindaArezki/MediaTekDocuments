@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using MediaTekDocuments.model;
 using MediaTekDocuments.dal;
+using System;
+using System.Linq;
 
 namespace MediaTekDocuments.controller
 {
     /// <summary>
     /// Contrôleur lié à FrmMediatek
     /// </summary>
-    class FrmMediatekController
+    public class FrmMediatekController
     {
         /// <summary>
         /// Objet d'accès aux données
@@ -85,6 +87,7 @@ namespace MediaTekDocuments.controller
             return access.GetAllSuivis();
         }
 
+      
         /// <summary>
         /// récupère les exemplaires d'une revue
         /// </summary>
@@ -117,6 +120,28 @@ namespace MediaTekDocuments.controller
         }
 
         /// <summary>
+        /// récupère les commandes d'un document
+        /// </summary
+        /// <param name="idDocument">id du document concerné</param>
+        /// <returns>Liste d'objets Commandesdocument</returns>
+        public List<Abonnement> GetAbonnement(string idDocument)
+        {
+            return access.GetAbonnement(idDocument);
+        }
+
+        /// <summary>
+        /// récupère les commandes d'un document
+        /// </summary
+        
+        /// <returns>Liste d'objets Commandesdocument</returns>
+        public List<AbonnementFin> GetAbonnementFin()
+        {
+            return access.GetAbonnementFin();
+        }
+
+
+
+        /// <summary>
         /// Crée un exemplaire d'une revue dans la bdd
         /// </summary>
         /// <param name="Id">L'objet Commandedocuments concerné</param>
@@ -126,11 +151,11 @@ namespace MediaTekDocuments.controller
         /// <returns>True si la création a pu se faire</returns>
         public bool CreerCommandeDocuments(string Id, int NbExemplaire, string IdLivreDvd, int Suivi)
         {
-            return access.CreerCommandesDocument( Id,  NbExemplaire,  IdLivreDvd,  Suivi);
+            return access.CreerCommandesDocument(Id, NbExemplaire, IdLivreDvd, Suivi);
         }
 
         /// <summary>
-        /// Crée un exemplaire d'une revue dans la bdd
+        /// Crée une commmande
         /// </summary>
         /// <param name="commande">L'objet Commande concerné</param>
         /// <returns>True si la création a pu se faire</returns>
@@ -140,15 +165,29 @@ namespace MediaTekDocuments.controller
         }
 
         /// <summary>
+        /// Crée une command d'une revue dans la bdd
+        /// </summary>
+        /// <param name="id">L'objet Commande concerné</param>
+        /// <param name="dateFinAbonnement">L'objet Commande concerné</param>
+        /// <param name="idRevue">L'objet Commande concerné</param>
+        /// <returns>True si la création a pu se faire</returns>
+        public bool CreerCommandesRevue(string id, DateTime dateFinAbonnement, string idRevue)
+        {
+            return access.CreerCommandesRevue(id, dateFinAbonnement, idRevue);
+        }
+
+        /// <summary>
         /// supprime une commande 
         /// </summary
         /// <param name="Id">id du document concerné</param>
         /// <returns>Liste d'objets Commandesdocument</returns>
         public bool SupprimerCommande(string Id)
         {
-            
+
             return access.SupprimerCommandesDocument(Id);
         }
+
+     
 
         /// <summary>
         /// modifie une commande 
@@ -161,12 +200,37 @@ namespace MediaTekDocuments.controller
         public bool ModifierCommande(string Id, int nbExemplaire, string idLivreDvd, int suivi)
         {
 
-            return access.ModifierCommandesDocument(Id,nbExemplaire,idLivreDvd,suivi);
+            return access.ModifierCommandesDocument(Id, nbExemplaire, idLivreDvd, suivi);
         }
 
+        /// <summary>
+        /// Récupère les exemplaires rattachés à la revue concerné par un abonnement
+        /// puis demande vérification s'ils font partie de l'abonnement
+        /// </summary>
+        /// <param name="abonnement">L'abonnement concerné</param>
+        /// <returns>True si un exemplaire est rattaché à l'abonnement</returns>
+        public bool Exemplairesverifie(Abonnement abonnement)
+        {
+            List<Exemplaire> lesExemplaires = GetExemplairesRevue(abonnement.IdRevue);
+            bool parutionexemplaire = false;
+            foreach (Exemplaire exemplaire in lesExemplaires.Where(exemplaire => ParutionDansAbonnement(abonnement.DateCommande, abonnement.DateFinAbonnement, exemplaire.DateAchat)))
+            {
+                parutionexemplaire = true;
+            }
+            return parutionexemplaire;
 
+        }
 
-
-
+        /// <summary>
+        /// Teste si dateParution est compris entre dateCommande et dateFinAbonnement
+        /// </summary>
+        /// <param name="dateCommande">Date de commande d'un abonnement</param>
+        /// <param name="dateFinAbonnement">Date de fin d'un abonnement</param>
+        /// <param name="dateParution">Date d'Achat d'un exemplaire</param>
+        /// <returns>True si la date est comprise</returns>
+        public bool ParutionDansAbonnement(DateTime dateCommande, DateTime dateFinAbonnement, DateTime dateParution)
+        {
+            return (DateTime.Compare(dateCommande, dateParution) < 0 && DateTime.Compare(dateParution, dateFinAbonnement) < 0);
+        }
     }
 }

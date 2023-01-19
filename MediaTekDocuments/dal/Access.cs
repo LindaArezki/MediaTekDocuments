@@ -182,8 +182,33 @@ namespace MediaTekDocuments.dal
         public List<CommandesDocument> GetCommandesDocument(string idDocument)
         {
             List<CommandesDocument> lescommandesdocument = TraitementRecup<CommandesDocument>(GET, "commandedocument/" + idDocument);
+            Console.WriteLine("******** jsonIdCommande = " + lescommandesdocument);
             return lescommandesdocument;
         }
+
+        /// <summary>
+        /// Retourne les commandes d'un document
+        /// </summary>
+        /// <param name="idDocument">id du document concernée</param>
+        /// <returns>Liste d'objets CommandesDocument</returns>
+        public List<Abonnement> GetAbonnement(string idDocument)
+        {
+            List<Abonnement> lescommandesabonnements = TraitementRecup<Abonnement>(GET, "abonnement/" + idDocument);
+            Console.WriteLine("********** Access:lescommandesabonnements nb=" + lescommandesabonnements.Count);
+            return lescommandesabonnements;
+           
+        }
+
+        /// <summary>
+        /// Retourne tous les suivis à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets Revue</returns>
+        public List<AbonnementFin> GetAbonnementFin()
+        {
+            List<AbonnementFin> lesabonnements = TraitementRecup<AbonnementFin>(GET, "abonnement");
+            return lesabonnements;
+        }
+
 
         /// <summary>
         /// ecriture d'une commande en base de données
@@ -231,6 +256,32 @@ namespace MediaTekDocuments.dal
             return false;
         }
 
+
+        /// <summary>
+        /// ecriture d'une commandedocument en base de données
+        /// </summary>
+        /// <param name="id">l'id du document à insérer</param>
+        /// <param name="dateFinAbonnement">l'id du document à insérer</param>
+        /// <param name="idRevue">le suivi à insérer</param>
+        /// <returns>true si l'insertion a pu se faire (retour != null)</returns>
+        public bool CreerCommandesRevue(string id , DateTime dateFinAbonnement, string idRevue)
+        {
+            String jsondateCommande = JsonConvert.SerializeObject(dateFinAbonnement, new CustomDateTimeConverter());
+            String jsonabonnement = "{  \"id\" : " + id + ", \"dateFinabonnement\" : " + jsondateCommande + ", \"idRevue\" :  \"" + idRevue + "\"" + "}";
+            Console.WriteLine("******** jsonIdCommande" + jsonabonnement);
+            try
+            {
+                // récupération soit d'une liste vide (requête ok) soit de null (erreur)
+                List<CommandesDocument> liste = TraitementRecup<CommandesDocument>(POST, "abonnement/" + jsonabonnement);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+       
         /// <summary>
         /// Supression d'une commande en base de données
         /// </summary>
@@ -252,6 +303,8 @@ namespace MediaTekDocuments.dal
             }
             return false;
         }
+
+       
 
         /// <summary>
         /// Modification d'une commande en base de données
@@ -302,6 +355,7 @@ namespace MediaTekDocuments.dal
                     if (methode.Equals(GET))
                     {
                         String resultString = JsonConvert.SerializeObject(retour["result"]);
+                        Console.WriteLine("******** Affichage du résultat" + resultString);
                         // construction de la liste d'objets à partir du retour de l'api
                         liste = JsonConvert.DeserializeObject<List<T>>(resultString, new CustomBooleanJsonConverter());
                     }
@@ -313,7 +367,7 @@ namespace MediaTekDocuments.dal
             }catch(Exception e)
             {
                 Console.WriteLine("Erreur lors de l'accès à l'API : "+e.Message);
-                Environment.Exit(0);
+                //Environment.Exit(0);
             }
             return liste;
         }

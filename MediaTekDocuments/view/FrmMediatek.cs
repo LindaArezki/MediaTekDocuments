@@ -29,6 +29,19 @@ namespace MediaTekDocuments.view
             InitializeComponent();
             this.controller = new FrmMediatekController();
         }
+       
+        /// Dès l'ouverture de l'application la vue d'alerte de fin d'abonnements s'ouvre
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmMediatek_Shown(object sender, EventArgs e)
+        {
+             FrmAlerteAbonnement alerteFinAbonnements = new FrmAlerteAbonnement(controller);
+            alerteFinAbonnements.StartPosition = FormStartPosition.CenterParent;
+            alerteFinAbonnements.ShowDialog();
+        }
+       
+        
 
         /// <summary>
         /// Rempli un des 3 combo (genre, public, rayon)
@@ -1385,7 +1398,8 @@ namespace MediaTekDocuments.view
         }
 
         /// <summary>
-        /// Permet ou interdit l'accès à la gestion de la commande d'un livre
+        /// Permet ou interdit l'accès à la gestion de la commande d'un livre 
+        /// A utilisé apres avoir trouvé comment on peut le désactiver apres avoir modifier un état suivi sans que ça bloque les autres sélections
         /// et vide les objets graphiques
         /// </summary>
         /// <param name="acces">true ou false</param>
@@ -1578,20 +1592,6 @@ namespace MediaTekDocuments.view
         }
 
 
-        private void Modificationdeletape()
-        {
-            if  (dgvCommandelivres.CurrentCell != null )
-            {
-
-                CommandesDocument commandesDocument = (CommandesDocument)bdgCommandeslivres.List[bdgCommandeslivres.Position];
-                Modifieretapesuivi(commandesDocument);
-
-            }
-            
-             AccesGroupBoxdgestion(false);
-            
-            
-        }
 
         private void dgvCommandelivres_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -1607,10 +1607,9 @@ namespace MediaTekDocuments.view
 
 
 
-
         #endregion
 
-            #region Onglet CommandesDvd
+        #region Onglet CommandesDvd
         private readonly BindingSource bdgCommandesDVD = new BindingSource();
 
         /// <summary>
@@ -1864,7 +1863,6 @@ namespace MediaTekDocuments.view
         {
             if (!txtboxcommandedvd.Text.Equals("") && !txtboxmontantdvd.Text.Equals("") && !txtboxexemplairedvd.Text.Equals(""))
             {
-                
 
                 string id = txtboxcommandedvd.Text;
                 DateTime dateCommande = dateTimePickerdvd.Value;
@@ -1897,13 +1895,247 @@ namespace MediaTekDocuments.view
       
 
         private void dgvcommandedvd_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        { 
-            Modificationdeletape();
+        {
+           
+                if (dgvcommandedvd.CurrentCell != null)
+                {
+
+                    CommandesDocument commandesDocument = (CommandesDocument)bdgCommandesDVD.List[bdgCommandesDVD.Position];
+                    Modifieretapesuivi(commandesDocument);
+                }
+
+        }
+        #endregion
+
+        #region Onglet CommandesRevues
+
+        private readonly BindingSource bdgCommandesRevue = new BindingSource();
+        private List<Abonnement> lescommandesabonnements = new List<Abonnement>();
+        
+        /// <summary>
+        /// Récupere les revues quand l'onglet est ouvert
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabCommandeRevue_Enter(object sender, EventArgs e)
+        {
+            lesRevues = controller.GetAllRevues();
+          
 
         }
 
-       
+        /// <summary>
+        /// Vide les champs et empeche d'avoir acces au groupbox de gestion de revue
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtboxdocurevue_TextChanged(object sender, EventArgs e)
+        {
+            txtboxperiodiciterevu.Text = "";
+            txtboxcheminimagerevue.Text = "";
+            txtboxdelairevu.Text = "";
+            txtboxnumeroderevu2.Text = "";
+            txtboxgenrerevu.Text = "";
+            txtboxpublicrevue.Text = "";
+            txtboxrayonrevu.Text = "";
+            txtboxtitrerevue.Text = "";
+            pictureBoxrevu.Image = null;
+            RemplirCommandesRevueListe(null);
+            AccesGroupBoxdelacommandederevue(false);
+        }
+
+        /// <summary>
+        /// Permet ou interdit l'accès à la gestion de la commande d'un dvd
+        /// et vide les objets graphiques
+        /// </summary>
+        /// <param name="acces"></param>
+        private void AccesGroupBoxdelacommandederevue(bool acces)
+        {
+                groupboxajoutrevu.Enabled = acces;
+                pictureBoxrevu.Image = null;
+                dateTimePickerrevue.Value = DateTime.Now;
+        }
+
+        /// <summary>
+        /// Bouton permettant de chercher un numero de revue
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void buttnrechercherevue_Click(object sender, EventArgs e)
+        {
+            if (!txtboxdocurevue.Text.Equals(""))
+            {
+                Revue revue = lesRevues.Find(x => x.Id.Equals(txtboxdocurevue.Text));
+                if (revue != null)
+                {
+                    AfficheCommandeRevueInfos(revue);
+                }
+                else
+                {
+                    MessageBox.Show("numéro introuvable");
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Remplit le dategrid des commandes avec la liste de revue reçue en paramètre
+        /// </summary>
+        /// <param name="lescommandesabonnements">liste des commandes</param>
+        private void RemplirCommandesRevueListe(List<Abonnement> lescommandesabonnements)
+        {
+            if (lescommandesabonnements != null)
+            {
+                bdgCommandesRevue.DataSource = lescommandesabonnements;
+                dgvCommandesRevues.DataSource = bdgCommandesRevue;
+                dgvCommandesRevues.Columns["id"].Visible = false;
+                dgvCommandesRevues.Columns["idRevue"].Visible = false;
+                dgvCommandesRevues.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dgvCommandesRevues.Columns["dateCommande"].DisplayIndex = 0;
+                dgvCommandesRevues.Columns["montant"].DisplayIndex = 1;
+                dgvCommandesRevues.Columns[3].HeaderCell.Value = "Date de la commande";
+                dgvCommandesRevues.Columns[0].HeaderCell.Value = "Date de fin d'abonnement";
+
+            }
+            else
+            {
+                bdgCommandesRevue.DataSource = null;
+            }
+        }
+
+
+     
+
+        /// <summary>
+        /// Affichage des informations de la commande sélectionnée et les revues
+        /// </summary>
+        /// <param name="revue">la revue</param>
+        private void AfficheCommandeRevueInfos(Revue revue)
+        {
+            txtboxperiodiciterevu.Text = revue.Periodicite;
+            txtboxcheminimagerevue.Text = revue.Image;
+            txtboxdelairevu.Text = revue.DelaiMiseADispo.ToString();
+            txtboxnumeroderevu2.Text = revue.Id;
+            txtboxgenrerevu.Text = revue.Genre;
+            txtboxpublicrevue.Text = revue.Public;
+            txtboxrayonrevu.Text = revue.Rayon;
+            txtboxtitrerevue.Text = revue.Titre;
+            string image = revue.Image;
+            try
+            {
+                pictureBoxrevu.Image = Image.FromFile(image);
+            }
+            catch
+            {
+                pictureBoxrevu.Image = null;
+            }
+            // affiche la liste des commandes des revues
+            AfficheReceptionCommandeRevue();
+        }
+
+        /// <summary>
+        /// Récupère et affiche les commandes d'une revue 
+        /// </summary>
+        private void AfficheReceptionCommandeRevue()
+        {
+            string idDocument = txtboxdocurevue.Text;
+            lescommandesabonnements = controller.GetAbonnement(idDocument);
+            Console.WriteLine("******** lescommandesabonnements =" + lescommandesabonnements.Count );
+            RemplirCommandesRevueListe(lescommandesabonnements);
+            AccesGroupBoxdelacommandederevue(true);
+        }
+
+        /// <summary>
+        /// Bouton permettant d'enregistrer une commande de revue, de l'ajouter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonenregistrer_Click(object sender, EventArgs e)
+        {
+            if (!txtboxcommandenumerorevue.Text.Equals("") && !txtboxmontantrevue.Text.Equals("") )
+            {
+
+                string id = txtboxcommandenumerorevue.Text;
+                DateTime dateCommande = dateTimePickerrevue.Value;
+                double montant = double.Parse(txtboxmontantrevue.Text);
+                DateTime dateFinAbonnement = dateTimePickerfin.Value;
+                string idRevue = txtboxdocurevue.Text;
+
+
+                Commande commande = new Commande(id, dateCommande, montant);
+                Abonnement abonnement = new Abonnement(id, dateCommande, montant, dateFinAbonnement, idRevue);
+                if (controller.CreerCommandes(commande) && controller.CreerCommandesRevue(id,dateFinAbonnement,idRevue))
+                {
+                    AfficheReceptionCommandeRevue();
+                }
+                else
+                {
+                    MessageBox.Show("numéro de commande déjà existant", "Erreur");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Tous les champs sont obligatoires", "Information");
+            }
+
+        }
+
+        /// <summary>
+        /// Trie sur colonne
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvCommandesRevues_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string titreColonne = dgvCommandesRevues.Columns[e.ColumnIndex].HeaderText;
+            List<Abonnement> sortedList = new List<Abonnement>();
+            switch (titreColonne)
+            {
+                case "Date de la commande":
+                    sortedList = lescommandesabonnements.OrderBy(o => o.DateCommande).Reverse().ToList();
+                    break;
+                case "Montant":
+                    sortedList = lescommandesabonnements.OrderBy(o => o.Montant).ToList();
+                    break;
+                case "Date de fin d'abonnement":
+                    sortedList = lescommandesabonnements.OrderBy(o => o.DateFinAbonnement).Reverse().ToList();
+                    break;
+            }
+            RemplirCommandesRevueListe(sortedList);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+
+            Abonnement abonnement = (Abonnement)bdgCommandesRevue.Current;
+            if (MessageBox.Show("Souhaitez-vous confirmer la supression?", "Etes vous sur ?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                if (controller.Exemplairesverifie(abonnement))
+                {
+                    if (controller.SupprimerCommande(abonnement.Id))
+                    {
+                        AfficheReceptionCommandeRevue();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Une erreur s'est produite.", "Erreur");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Cet abonnement est lié à des exemplaires.", "Attention");
+                }
+            }
+        }
+        #endregion
+
+        
     }
-    
-    #endregion
 }
