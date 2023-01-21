@@ -19,7 +19,7 @@ namespace MediaTekDocuments.view
         private readonly List<AbonnementFin> lesabonnements = new List<AbonnementFin>();
 
         /// <summary>
-        /// Constructeur de classe
+        /// Constructeur de classe, remplit le datagridview
         /// </summary>
         public FrmAlerteAbonnement(FrmMediatekController controller)
         {
@@ -36,7 +36,11 @@ namespace MediaTekDocuments.view
             dgvAbonnements.Focus();
         }
         
-
+    /// <summary>
+    /// Ferme la fenetre et rentre dans la fenêtre principale.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void buttoncontinuer_Click(object sender, EventArgs e)
         {
             this.Close();

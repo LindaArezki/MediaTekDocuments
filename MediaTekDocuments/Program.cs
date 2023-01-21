@@ -1,4 +1,5 @@
 ﻿using MediaTekDocuments.view;
+using MediaTekDocuments.controller;
 using System;
 using System.Windows.Forms;
 
@@ -14,7 +15,7 @@ namespace MediaTekDocuments
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMediatek());
+            Application.Run(new FrmAuthentification());
         }
     }
 }

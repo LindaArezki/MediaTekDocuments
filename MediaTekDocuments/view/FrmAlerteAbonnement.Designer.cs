@@ -38,9 +38,10 @@ namespace MediaTekDocuments.view
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(179, 50);
+            this.label1.Location = new System.Drawing.Point(75, 29);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(709, 45);
+            this.label1.Size = new System.Drawing.Size(473, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = " Abonnements expirant dans 30 jours : ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -48,19 +49,21 @@ namespace MediaTekDocuments.view
             // dgvAbonnements
             // 
             this.dgvAbonnements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAbonnements.Location = new System.Drawing.Point(42, 118);
+            this.dgvAbonnements.Location = new System.Drawing.Point(28, 77);
+            this.dgvAbonnements.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvAbonnements.Name = "dgvAbonnements";
             this.dgvAbonnements.RowHeadersWidth = 62;
             this.dgvAbonnements.RowTemplate.Height = 28;
-            this.dgvAbonnements.Size = new System.Drawing.Size(1014, 395);
+            this.dgvAbonnements.Size = new System.Drawing.Size(576, 257);
             this.dgvAbonnements.TabIndex = 1;
             // 
             // buttoncontinuer
             // 
             this.buttoncontinuer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttoncontinuer.Location = new System.Drawing.Point(122, 540);
+            this.buttoncontinuer.Location = new System.Drawing.Point(29, 352);
+            this.buttoncontinuer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttoncontinuer.Name = "buttoncontinuer";
-            this.buttoncontinuer.Size = new System.Drawing.Size(845, 74);
+            this.buttoncontinuer.Size = new System.Drawing.Size(563, 48);
             this.buttoncontinuer.TabIndex = 2;
             this.buttoncontinuer.Text = "Continuer";
             this.buttoncontinuer.UseVisualStyleBackColor = true;
@@ -68,12 +71,13 @@ namespace MediaTekDocuments.view
             // 
             // FrmAlerteAbonnement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1096, 713);
+            this.ClientSize = new System.Drawing.Size(650, 424);
             this.Controls.Add(this.buttoncontinuer);
             this.Controls.Add(this.dgvAbonnements);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmAlerteAbonnement";
             this.Text = "FrmAlerteAbonnement";
             ((System.ComponentModel.ISupportInitialize)(this.dgvAbonnements)).EndInit();

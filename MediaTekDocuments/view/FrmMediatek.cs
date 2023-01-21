@@ -28,6 +28,13 @@ namespace MediaTekDocuments.view
         {
             InitializeComponent();
             this.controller = new FrmMediatekController();
+            if (Service.Libelle == "Prêt")
+            {
+                
+                tabonglet.TabPages.Remove(tabcommandelivres);
+                tabonglet.TabPages.Remove(tabCommandeDvd);
+                tabonglet.TabPages.Remove(tabCommandeRevue);
+            }
         }
        
         /// Dès l'ouverture de l'application la vue d'alerte de fin d'abonnements s'ouvre
@@ -36,9 +43,12 @@ namespace MediaTekDocuments.view
         /// <param name="e"></param>
         private void FrmMediatek_Shown(object sender, EventArgs e)
         {
-             FrmAlerteAbonnement alerteFinAbonnements = new FrmAlerteAbonnement(controller);
-            alerteFinAbonnements.StartPosition = FormStartPosition.CenterParent;
-            alerteFinAbonnements.ShowDialog();
+            if (Service.Libelle != "Prêt")
+            {
+                FrmAlerteAbonnement alerteFinAbonnements = new FrmAlerteAbonnement(controller);
+                alerteFinAbonnements.StartPosition = FormStartPosition.CenterParent;
+                alerteFinAbonnements.ShowDialog();
+            }
         }
        
         
@@ -1379,9 +1389,6 @@ namespace MediaTekDocuments.view
             lescommandesdocument = controller.GetCommandesDocument(idDocument);
             RemplirCommandesLivresListe(lescommandesdocument);
             AccesGroupBoxdelacommande(true);
-           
-            
-
         }
 
         /// <summary>
@@ -1397,18 +1404,7 @@ namespace MediaTekDocuments.view
             dateTimePickercommande.Value = DateTime.Now;
         }
 
-        /// <summary>
-        /// Permet ou interdit l'accès à la gestion de la commande d'un livre 
-        /// A utilisé apres avoir trouvé comment on peut le désactiver apres avoir modifier un état suivi sans que ça bloque les autres sélections
-        /// et vide les objets graphiques
-        /// </summary>
-        /// <param name="acces">true ou false</param>
-        private void AccesGroupBoxdgestion(bool acces)
-        {
-            groupBox1.Enabled = acces;
-           
-        }
-
+   
         /// <summary>
         /// Tri sur une colonne
         /// </summary>
@@ -1544,18 +1540,14 @@ namespace MediaTekDocuments.view
         private void buttonLivrer_Click(object sender, EventArgs e)
         {
             CommandesDocument commandesDocument = (CommandesDocument)bdgCommandeslivres.List[bdgCommandeslivres.Position];
-
             Suivi suivi = lesSuivis.Find(x => x.Libelle == "Livrée");
             List<Suivi> Suivis = new List<Suivi>() { suivi };
-
 
             if (MessageBox.Show("Souhaitez-vous confirmer la modification?", "Etes vous sur ?", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 controller.ModifierCommande(commandesDocument.Id, commandesDocument.NbExemplaire, commandesDocument.IdLivreDvd, suivi.Idetape);
                 AfficheReceptionCommandeLivre();
-
             }
-
         }
 
         
@@ -1591,21 +1583,19 @@ namespace MediaTekDocuments.view
             }
         }
 
-
-
+        /// <summary>
+        /// Permet d'appuyer sur les lignes du datagridview pour empecher les boutons en fonction de la ligne
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvCommandelivres_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dgvCommandelivres.CurrentCell != null)
             {
-
                 CommandesDocument commandesDocument = (CommandesDocument)bdgCommandeslivres.List[bdgCommandeslivres.Position];
                 Modifieretapesuivi(commandesDocument); 
-
             }
         }
-
-
-
 
         #endregion
 
@@ -1716,7 +1706,7 @@ namespace MediaTekDocuments.view
             {
                 pictureBoximagedvd.Image = null;
             }
-            // affiche la liste des commandes des livres
+            // affiche la liste des commandes des dvd
             AfficheReceptionCommandeDvd();
         }
 
@@ -1769,9 +1759,8 @@ namespace MediaTekDocuments.view
                     break;
             }
 
-
             RemplirCommandesDvdListe(sortedList);
-         }
+        }
 
 
         /// <summary>
@@ -1892,18 +1881,50 @@ namespace MediaTekDocuments.view
 
         }
 
-      
+        /// <summary>
+        /// Active/Désactive les boutons de gestion de commande en fonction de l'état de suivi
+        /// </summary>
+        /// <param name="commandesDocument">CommandeDocument concernée</param>
+        private void Modifieretapesuividvd(CommandesDocument commandesDocument)
+        {
+            string suiviLibelle = commandesDocument.Libelle;
+            switch (suiviLibelle)
+            {
+                case "En cours":
 
+                case "Relancée":
+                    buttonlivrerdvd.Enabled = true;
+                    bttnreglerdvd.Enabled = true;
+                    buttonrelancerdvd.Enabled = false;
+                    buttonsupprimerdvd.Enabled = true;
+                    break;
+                case "Livrée":
+                    buttonlivrerdvd.Enabled = false;
+                    bttnreglerdvd.Enabled = false;
+                    buttonrelancerdvd.Enabled = false;
+                    buttonsupprimerdvd.Enabled = false;
+                    break;
+                case "Réglée":
+                    buttonlivrerdvd.Enabled = true;
+                    bttnreglerdvd.Enabled = false;
+                    buttonrelancerdvd.Enabled = false;
+                    buttonsupprimerdvd.Enabled = true;
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Permet d'appuyer sur les lignes du datagridview pour empecher les boutons en fonction de la ligne
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvcommandedvd_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-           
                 if (dgvcommandedvd.CurrentCell != null)
                 {
-
                     CommandesDocument commandesDocument = (CommandesDocument)bdgCommandesDVD.List[bdgCommandesDVD.Position];
-                    Modifieretapesuivi(commandesDocument);
+                    Modifieretapesuividvd(commandesDocument);
                 }
-
         }
         #endregion
 
@@ -1945,7 +1966,7 @@ namespace MediaTekDocuments.view
         }
 
         /// <summary>
-        /// Permet ou interdit l'accès à la gestion de la commande d'un dvd
+        /// Permet ou interdit l'accès à la gestion de la commande d'une revue
         /// et vide les objets graphiques
         /// </summary>
         /// <param name="acces"></param>
@@ -2083,7 +2104,7 @@ namespace MediaTekDocuments.view
         }
 
         /// <summary>
-        /// Trie sur colonne
+        /// Tri sur colonne
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -2106,8 +2127,10 @@ namespace MediaTekDocuments.view
             RemplirCommandesRevueListe(sortedList);
         }
 
+       
+
         /// <summary>
-        /// 
+        /// Bouton qui vérifie qu'aucun exemplaire est relié à un abonnement et permet ensuite de le supprimer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -2117,6 +2140,7 @@ namespace MediaTekDocuments.view
             Abonnement abonnement = (Abonnement)bdgCommandesRevue.Current;
             if (MessageBox.Show("Souhaitez-vous confirmer la supression?", "Etes vous sur ?", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
+               
                 if (controller.Exemplairesverifie(abonnement))
                 {
                     if (controller.SupprimerCommande(abonnement.Id))

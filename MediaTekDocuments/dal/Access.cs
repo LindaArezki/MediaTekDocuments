@@ -182,19 +182,17 @@ namespace MediaTekDocuments.dal
         public List<CommandesDocument> GetCommandesDocument(string idDocument)
         {
             List<CommandesDocument> lescommandesdocument = TraitementRecup<CommandesDocument>(GET, "commandedocument/" + idDocument);
-            Console.WriteLine("******** jsonIdCommande = " + lescommandesdocument);
             return lescommandesdocument;
         }
 
         /// <summary>
-        /// Retourne les commandes d'un document
+        /// Retourne les abonnements d'un document
         /// </summary>
         /// <param name="idDocument">id du document concernée</param>
         /// <returns>Liste d'objets CommandesDocument</returns>
         public List<Abonnement> GetAbonnement(string idDocument)
         {
             List<Abonnement> lescommandesabonnements = TraitementRecup<Abonnement>(GET, "abonnement/" + idDocument);
-            Console.WriteLine("********** Access:lescommandesabonnements nb=" + lescommandesabonnements.Count);
             return lescommandesabonnements;
            
         }
@@ -209,7 +207,7 @@ namespace MediaTekDocuments.dal
             return lesabonnements;
         }
 
-
+        
         /// <summary>
         /// ecriture d'une commande en base de données
         /// </summary>
@@ -221,7 +219,7 @@ namespace MediaTekDocuments.dal
             try
             {
                 // récupération soit d'une liste vide (requête ok) soit de null (erreur)
-                List<CommandesDocument> liste = TraitementRecup<CommandesDocument>(POST, "commande/" + jsonCommande);
+                List<Commande> liste = TraitementRecup<Commande>(POST, "commande/" + jsonCommande);
                 return (liste != null);
             }
             catch (Exception ex)
@@ -242,7 +240,6 @@ namespace MediaTekDocuments.dal
         public bool CreerCommandesDocument(string id, int nbExemplaire, string idLivreDvd, int suivi)
         {
             String jsonCommandeDocument ="{ \"id\" : " + id + ", \"nbExemplaire\" : " + nbExemplaire + ", \"idLivreDvd\" : \""  + idLivreDvd + "\""+", \"suivi\" : " + suivi + "}";
-                Console.WriteLine("******** jsonIdCommande" + jsonCommandeDocument);
             try
             {
                 // récupération soit d'une liste vide (requête ok) soit de null (erreur)
@@ -258,7 +255,7 @@ namespace MediaTekDocuments.dal
 
 
         /// <summary>
-        /// ecriture d'une commandedocument en base de données
+        /// ecriture d'une commande de revue en base de données
         /// </summary>
         /// <param name="id">l'id du document à insérer</param>
         /// <param name="dateFinAbonnement">l'id du document à insérer</param>
@@ -268,7 +265,7 @@ namespace MediaTekDocuments.dal
         {
             String jsondateCommande = JsonConvert.SerializeObject(dateFinAbonnement, new CustomDateTimeConverter());
             String jsonabonnement = "{  \"id\" : " + id + ", \"dateFinabonnement\" : " + jsondateCommande + ", \"idRevue\" :  \"" + idRevue + "\"" + "}";
-            Console.WriteLine("******** jsonIdCommande" + jsonabonnement);
+ 
             try
             {
                 // récupération soit d'une liste vide (requête ok) soit de null (erreur)
@@ -287,10 +284,9 @@ namespace MediaTekDocuments.dal
         /// </summary>
         /// <param name="Id">commande à supprimer</param>
         /// <returns>true si l'insertion a pu se faire (retour != null)</returns>
-        public bool SupprimerCommandesDocument(string Id)
+        public bool SupprimerCommandes(string Id)
         {
             String jsonIdCommande = "{ \"id\" : "+Id+"}";
-            Console.WriteLine("******** jsonIdCommande" + jsonIdCommande);
             try
             {
                 // récupération soit d'une liste vide (requête ok) soit de null (erreur)
@@ -304,7 +300,30 @@ namespace MediaTekDocuments.dal
             return false;
         }
 
-       
+
+        /// <summary>
+        /// Récupération de l'utilisateur correspondant au login
+        /// </summary>
+        /// <param name="login">login de l'utiisateur à chercher</param>
+        /// <returns>l'utilisateur trouvé, ou null</returns>
+        public Utilisateur GetAuthentification(string login)
+        {
+            try
+            {
+                List<Utilisateur> liste = TraitementRecup<Utilisateur>(GET, "utilisateur/" + login);
+                if (liste==null || liste.Count == 0)
+                {
+                    return null;
+                }
+                // retourne l'utilisateur trouvé
+                return (liste[0]);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
 
         /// <summary>
         /// Modification d'une commande en base de données
@@ -317,7 +336,6 @@ namespace MediaTekDocuments.dal
         public bool ModifierCommandesDocument( string Id, int nbExemplaire, string idLivreDvd, int suivi)
         {
             String jsonCommandeDocument = "{ \"id\" : " + Id + " , \"nbExemplaire\" : " + nbExemplaire + ", \"idLivreDvd\" : \"" + idLivreDvd + "\"" + ", \"suivi\" : " + suivi + " }";
-            Console.WriteLine("******** jsonIdCommandeDocument/" +  Id + "/"+ jsonCommandeDocument);
             try
             {
                 // récupération soit d'une liste vide (requête ok) soit de null (erreur)
@@ -330,9 +348,6 @@ namespace MediaTekDocuments.dal
             }
             return false;
         }
-
-
-
 
         /// <summary>
         /// Traitement de la récupération du retour de l'api, avec conversion du json en liste pour les select (GET)
@@ -355,7 +370,6 @@ namespace MediaTekDocuments.dal
                     if (methode.Equals(GET))
                     {
                         String resultString = JsonConvert.SerializeObject(retour["result"]);
-                        Console.WriteLine("******** Affichage du résultat" + resultString);
                         // construction de la liste d'objets à partir du retour de l'api
                         liste = JsonConvert.DeserializeObject<List<T>>(resultString, new CustomBooleanJsonConverter());
                     }

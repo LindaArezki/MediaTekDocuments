@@ -2575,9 +2575,9 @@ namespace MediaTekDocuments.view
             this.groupboxgestiondvd.Controls.Add(this.buttonrelancerdvd);
             this.groupboxgestiondvd.Controls.Add(this.bttnreglerdvd);
             this.groupboxgestiondvd.Controls.Add(this.buttonsupprimerdvd);
-            this.groupboxgestiondvd.Location = new System.Drawing.Point(610, 805);
+            this.groupboxgestiondvd.Location = new System.Drawing.Point(610, 776);
             this.groupboxgestiondvd.Name = "groupboxgestiondvd";
-            this.groupboxgestiondvd.Size = new System.Drawing.Size(692, 254);
+            this.groupboxgestiondvd.Size = new System.Drawing.Size(692, 256);
             this.groupboxgestiondvd.TabIndex = 24;
             this.groupboxgestiondvd.TabStop = false;
             this.groupboxgestiondvd.Text = "Gestion d\'une commande existante";
@@ -2635,9 +2635,9 @@ namespace MediaTekDocuments.view
             this.groupboxnouvellecommandedvd.Controls.Add(this.label74);
             this.groupboxnouvellecommandedvd.Controls.Add(this.label75);
             this.groupboxnouvellecommandedvd.Controls.Add(this.label76);
-            this.groupboxnouvellecommandedvd.Location = new System.Drawing.Point(14, 805);
+            this.groupboxnouvellecommandedvd.Location = new System.Drawing.Point(14, 776);
             this.groupboxnouvellecommandedvd.Name = "groupboxnouvellecommandedvd";
-            this.groupboxnouvellecommandedvd.Size = new System.Drawing.Size(591, 260);
+            this.groupboxnouvellecommandedvd.Size = new System.Drawing.Size(591, 256);
             this.groupboxnouvellecommandedvd.TabIndex = 23;
             this.groupboxnouvellecommandedvd.TabStop = false;
             this.groupboxnouvellecommandedvd.Text = "Informations d\'une nouvelle commande";
@@ -2645,7 +2645,7 @@ namespace MediaTekDocuments.view
             // buttonenregisterdvd
             // 
             this.buttonenregisterdvd.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonenregisterdvd.Location = new System.Drawing.Point(20, 206);
+            this.buttonenregisterdvd.Location = new System.Drawing.Point(22, 194);
             this.buttonenregisterdvd.Name = "buttonenregisterdvd";
             this.buttonenregisterdvd.Size = new System.Drawing.Size(454, 52);
             this.buttonenregisterdvd.TabIndex = 9;
@@ -2747,11 +2747,11 @@ namespace MediaTekDocuments.view
             this.grpboxinformationdvd.Controls.Add(this.label69);
             this.grpboxinformationdvd.Controls.Add(this.label70);
             this.grpboxinformationdvd.Controls.Add(this.label71);
-            this.grpboxinformationdvd.Location = new System.Drawing.Point(14, 426);
+            this.grpboxinformationdvd.Location = new System.Drawing.Point(14, 398);
             this.grpboxinformationdvd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpboxinformationdvd.Name = "grpboxinformationdvd";
             this.grpboxinformationdvd.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpboxinformationdvd.Size = new System.Drawing.Size(1288, 371);
+            this.grpboxinformationdvd.Size = new System.Drawing.Size(1288, 370);
             this.grpboxinformationdvd.TabIndex = 22;
             this.grpboxinformationdvd.TabStop = false;
             this.grpboxinformationdvd.Text = "Informations détaillées";
@@ -2967,11 +2967,11 @@ namespace MediaTekDocuments.view
             this.groupBox2.Controls.Add(this.label60);
             this.groupBox2.Controls.Add(this.txtboxdocudvd);
             this.groupBox2.Controls.Add(this.dgvcommandedvd);
-            this.groupBox2.Location = new System.Drawing.Point(14, 25);
+            this.groupBox2.Location = new System.Drawing.Point(14, 5);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(1288, 402);
+            this.groupBox2.Size = new System.Drawing.Size(1288, 392);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recherches";
@@ -3015,7 +3015,7 @@ namespace MediaTekDocuments.view
             this.dgvcommandedvd.AllowUserToResizeColumns = false;
             this.dgvcommandedvd.AllowUserToResizeRows = false;
             this.dgvcommandedvd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvcommandedvd.Location = new System.Drawing.Point(12, 85);
+            this.dgvcommandedvd.Location = new System.Drawing.Point(14, 75);
             this.dgvcommandedvd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvcommandedvd.MultiSelect = false;
             this.dgvcommandedvd.Name = "dgvcommandedvd";
