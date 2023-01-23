@@ -82,6 +82,7 @@ namespace MediaTekDocuments.view
             this.txtboxmdp.Location = new System.Drawing.Point(125, 94);
             this.txtboxmdp.Margin = new System.Windows.Forms.Padding(2);
             this.txtboxmdp.Name = "txtboxmdp";
+            this.txtboxmdp.PasswordChar = '*';
             this.txtboxmdp.Size = new System.Drawing.Size(337, 20);
             this.txtboxmdp.TabIndex = 5;
             // 

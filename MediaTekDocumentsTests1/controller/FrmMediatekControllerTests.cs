@@ -11,23 +11,20 @@ namespace MediaTekDocuments.controller.Tests
     [TestClass()]
     public class FrmMediatekControllerTests
     {
-
         private readonly FrmMediatekController controller = new FrmMediatekController();
         private readonly DateTime dateCommande = new DateTime(2023, 1, 1);
         private readonly DateTime dateParution = new DateTime(2023, 6, 1);
-        private readonly  DateTime dateFinAbonnement = new DateTime(2023, 12, 1);
-
+        private readonly DateTime dateFinAbonnement = new DateTime(2023, 12, 1);
         [TestMethod()]
         public void ParutionDansAbonnementTest()
         {
-
             // Date parution valide
             bool bon = controller.ParutionDansAbonnement(dateCommande, dateFinAbonnement, dateParution);
             Assert.AreEqual(true, bon, "Le test reussi : DateParution est bien entre dateCommande et dateFinAbonnement");
 
             // Date parution égale aux bornes
             bool pasbon = controller.ParutionDansAbonnement(dateCommande, dateFinAbonnement, dateCommande);
-            Assert.AreEqual(false, pasbon, "Le test reussi  : DateParution = dateCommande"); 
+            Assert.AreEqual(false, pasbon, "Le test reussi  : DateParution = dateCommande");
 
             bool pasbon1 = controller.ParutionDansAbonnement(dateCommande, dateFinAbonnement, dateFinAbonnement);
             Assert.AreEqual(false, pasbon1, "Le test reussi  : DateParution = dateFinAbonnement ");
@@ -36,10 +33,8 @@ namespace MediaTekDocuments.controller.Tests
             bool pasbon2 = controller.ParutionDansAbonnement(dateParution, dateFinAbonnement, dateCommande);
             Assert.AreEqual(false, pasbon2, "Le test reussi  test : dateParution > dateFinAbonnement ");
 
-            bool pasbon3 = controller.ParutionDansAbonnement(dateCommande, dateParution , dateFinAbonnement);
+            bool pasbon3 = controller.ParutionDansAbonnement(dateCommande, dateParution, dateFinAbonnement);
             Assert.AreEqual(false, pasbon3, "Le test reussi : dateparution < dateCommande ");
-
-
         }
     }
 }
