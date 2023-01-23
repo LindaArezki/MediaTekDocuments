@@ -57,8 +57,6 @@ namespace MediaTekDocuments.dal
                 Console.WriteLine(e.Message);
                 Environment.Exit(0);
             }
-        }
-
         /// <summary>
         /// Création et retour de l'instance unique de la classe
         /// </summary>
