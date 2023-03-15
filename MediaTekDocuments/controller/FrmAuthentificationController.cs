@@ -17,7 +17,7 @@ namespace MediaTekDocuments.controller
         /// </summary>
         private readonly Access access;
 
-        public FrmAuthentification frmAuthentification;
+
 
         /// <summary>
         /// Récupération de l'instance unique d'accès aux données
@@ -38,15 +38,15 @@ namespace MediaTekDocuments.controller
         {
 
             Utilisateur utilisateur = access.GetAuthentification(login);
-            if(utilisateur == null)
+            if (utilisateur == null)
             {
                 return false;
             }
             // retourne vrai si le pwd est correct
-            if (utilisateur.Pwd.Equals(sha256(pwd)))
+            if (utilisateur.Pwd.Equals(Sha256(pwd)))
             {
                 Service.Id = utilisateur.IdService;
-                Service.Libelle = utilisateur.libelle;
+                Service.Libelle = utilisateur.Libelle;
                 return true;
             }
             return false;
@@ -58,7 +58,7 @@ namespace MediaTekDocuments.controller
         /// </summary>
         /// <param name="randomString"></param>
         /// <returns></returns>
-        static string sha256(string randomString)
+        static string Sha256(string randomString)
         {
             var crypt = new System.Security.Cryptography.SHA256Managed();
             var hash = new System.Text.StringBuilder();
@@ -72,3 +72,4 @@ namespace MediaTekDocuments.controller
 
     }
 }
+

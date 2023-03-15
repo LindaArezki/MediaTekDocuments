@@ -23,6 +23,7 @@ namespace MediaTekDocuments.view
         {
             InitializeComponent();
             this.controller = new FrmAuthentificationController();
+            
         }
 
         /// <summary>
@@ -30,7 +31,9 @@ namespace MediaTekDocuments.view
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+#pragma warning disable IDE1006 // Styles d'affectation de noms
         private void btnseconnecter_Click(object sender, EventArgs e)
+#pragma warning restore IDE1006 // Styles d'affectation de noms
         {
             string utilisateur = txtboxutilisateur.Text;
             string pwd = txtboxmdp.Text;
@@ -47,10 +50,12 @@ namespace MediaTekDocuments.view
                     {
                         if(Service.Libelle != "Culture") 
                         {
-                            
+
+                            this.Hide();
                             FrmMediatek frmMediatek = new FrmMediatek();
                             frmMediatek.ShowDialog();
-                            this.Close();
+                            
+
                         }
                         else
                         {
@@ -59,17 +64,25 @@ namespace MediaTekDocuments.view
                     }
 
             }
+            else
+            {
+                MessageBox.Show("Tous les champs sont obligatoires");
+
+            }
         }
         /// <summary>
         /// Bouton qui vide la les textbox 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+#pragma warning disable IDE1006 // Styles d'affectation de noms
         private void btnannuler_Click(object sender, EventArgs e)
+#pragma warning restore IDE1006 // Styles d'affectation de noms
         {
             txtboxutilisateur.Text = "";
             txtboxmdp.Text = "";
             txtboxutilisateur.Focus();
+            
         }
     }
 }

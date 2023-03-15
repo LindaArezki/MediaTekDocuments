@@ -20,7 +20,6 @@ namespace MediaTekDocuments.controller
         /// </summary>
         private readonly Access access;
 
-        public FrmMediatek frmMediatek;
         /// <summary>
         /// Récupération de l'instance unique d'accès aux données
         /// </summary>
@@ -28,7 +27,7 @@ namespace MediaTekDocuments.controller
         {
             access = Access.GetInstance();
 
-            
+
         }
 
         /// <summary>
@@ -94,7 +93,7 @@ namespace MediaTekDocuments.controller
             return access.GetAllSuivis();
         }
 
-      
+
         /// <summary>
         /// récupère les exemplaires d'une revue
         /// </summary>
@@ -135,7 +134,7 @@ namespace MediaTekDocuments.controller
         {
             return access.GetAbonnement(idDocument);
         }
-       
+
 
         /// <summary>
         /// récupère les abonnements qui se termine
@@ -193,7 +192,7 @@ namespace MediaTekDocuments.controller
             return access.SupprimerCommandes(Id);
         }
 
-       
+
 
 
         /// <summary>
@@ -223,25 +222,25 @@ namespace MediaTekDocuments.controller
             foreach (Exemplaire exemplaire in lesExemplaires.Where(exemplaires => ParutionDansAbonnement(abonnement.DateCommande, abonnement.DateFinAbonnement, exemplaires.DateAchat)))
             {
                 datedeparution = true;
-                
+
             }
             return !datedeparution;
         }
 
 
-    
-    /// <summary>
-    /// Teste si dateParution est compris entre dateCommande et dateFinAbonnement
-    /// </summary>
-    /// <param name="dateCommande">Date de commande d'un abonnement</param>
-    /// <param name="dateFinAbonnement">Date de fin d'un abonnement</param>
-    /// <param name="dateParution">Date d'Achat d'un exemplaire</param>
-    /// <returns>True si la date est comprise</returns>
-    public bool ParutionDansAbonnement (DateTime dateCommande, DateTime dateFinAbonnement, DateTime dateParution)
+
+        /// <summary>
+        /// Teste si dateParution est compris entre dateCommande et dateFinAbonnement
+        /// </summary>
+        /// <param name="dateCommande">Date de commande d'un abonnement</param>
+        /// <param name="dateFinAbonnement">Date de fin d'un abonnement</param>
+        /// <param name="dateParution">Date d'Achat d'un exemplaire</param>
+        /// <returns>True si la date est comprise</returns>
+        public bool ParutionDansAbonnement(DateTime dateCommande, DateTime dateFinAbonnement, DateTime dateParution)
         {
-             return (DateTime.Compare(dateCommande, dateParution) < 0 && DateTime.Compare(dateParution, dateFinAbonnement) < 0);
+            return (DateTime.Compare(dateCommande, dateParution) < 0 && DateTime.Compare(dateParution, dateFinAbonnement) < 0);
         }
 
-        
+
     }
 }

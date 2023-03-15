@@ -12,14 +12,14 @@ namespace MediaTekDocuments.model
         public string Login { get; }
         public string Pwd { get; }
         public int IdService { get; }
-        public string libelle { get; }
+        public string Libelle { get; }
 
         public Utilisateur(string login, string pwd, int idService, string libelle)
         {
             this.Login = login;
             this.Pwd = pwd;
             this.IdService = idService;
-            this.libelle = libelle;
+            this.Libelle = libelle;
         }
     }
 }

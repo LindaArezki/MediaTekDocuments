@@ -16,7 +16,9 @@ namespace MediaTekDocuments.view
     public partial class FrmAlerteAbonnement : Form
     {
         private readonly BindingSource bdgAbonnement = new BindingSource();
+
         private readonly List<AbonnementFin> lesabonnements = new List<AbonnementFin>();
+
 
         /// <summary>
         /// Constructeur de classe, remplit le datagridview
@@ -24,7 +26,6 @@ namespace MediaTekDocuments.view
         public FrmAlerteAbonnement(FrmMediatekController controller)
         {
             InitializeComponent();
-            ;
             lesabonnements = controller.GetAbonnementFin();
             bdgAbonnement.DataSource = lesabonnements;
             dgvAbonnements.DataSource = bdgAbonnement;
@@ -41,7 +42,9 @@ namespace MediaTekDocuments.view
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
+#pragma warning disable IDE1006 // Styles d'affectation de noms
     private void buttoncontinuer_Click(object sender, EventArgs e)
+#pragma warning restore IDE1006 // Styles d'affectation de noms
         {
             this.Close();
         }
