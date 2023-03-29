@@ -31,3 +31,70 @@ C:\test2\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Serilog.Sinks.File.x
 C:\test2\MediaTekDocuments\MediaTekDocumentsTests\obj\Debug\MediaTekDocumentsTests.csproj.CopyComplete
 C:\test2\MediaTekDocuments\MediaTekDocumentsTests\obj\Debug\MediaTekDocumentsTests.dll
 C:\test2\MediaTekDocuments\MediaTekDocumentsTests\obj\Debug\MediaTekDocumentsTests.pdb
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\fr\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\fr\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\fr\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\MediaTekDocumentsTests.dll.config
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\MediaTekDocumentsTests.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\MediaTekDocumentsTests.pdb
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\MediaTekDocuments.exe
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Newtonsoft.Json.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\System.Net.Http.Extensions.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\System.Net.Http.Formatting.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\System.Net.Http.Primitives.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Serilog.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Serilog.Sinks.Console.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Serilog.Sinks.File.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\MediaTekDocuments.pdb
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\MediaTekDocuments.exe.config
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Newtonsoft.Json.xml
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Serilog.xml
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Serilog.Sinks.Console.xml
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Serilog.Sinks.File.pdb
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\Serilog.Sinks.File.xml
+C:\MediaTekDocuments\MediaTekDocumentsTests\obj\Debug\MediaTekDocumentsTests.csproj.AssemblyReference.cache
+C:\MediaTekDocuments\MediaTekDocumentsTests\obj\Debug\MediaTekDocumentsTests.csproj.CoreCompileInputs.cache
+C:\MediaTekDocuments\MediaTekDocumentsTests\obj\Debug\MediaTekDocumentsTests.csproj.CopyComplete
+C:\MediaTekDocuments\MediaTekDocumentsTests\obj\Debug\MediaTekDocumentsTests.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests\obj\Debug\MediaTekDocumentsTests.pdb
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\fr\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\fr\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\fr\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\MediaTekDocumentsTests.dll.config
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\MediaTekDocumentsTests.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\MediaTekDocumentsTests.pdb
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\MediaTekDocuments.exe
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Newtonsoft.Json.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\System.Net.Http.Extensions.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\System.Net.Http.Formatting.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\System.Net.Http.Primitives.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Serilog.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Serilog.Sinks.Console.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Serilog.Sinks.File.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\MediaTekDocuments.pdb
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\MediaTekDocuments.exe.config
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Newtonsoft.Json.xml
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Serilog.xml
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Serilog.Sinks.Console.xml
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Serilog.Sinks.File.pdb
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\bin\Debug\Serilog.Sinks.File.xml
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\obj\Debug\MediaTekDocumentsTests.csproj.AssemblyReference.cache
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\obj\Debug\MediaTekDocumentsTests.csproj.CoreCompileInputs.cache
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\obj\Debug\MediaTekDocumentsTests.csproj.CopyComplete
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\obj\Debug\MediaTekDocumentsTests.dll
+C:\MediaTekDocuments sans speckflow\MediaTekDocumentsTests\obj\Debug\MediaTekDocumentsTests.pdb
+C:\MediaTekDocuments\MediaTekDocumentsTests\bin\Debug\MediaTekDocuments.xml

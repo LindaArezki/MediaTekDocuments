@@ -10,6 +10,9 @@ using System.Security.Cryptography;
 
 namespace MediaTekDocuments.controller
 {
+    /// <summary>
+    /// Controlleur de la fenêtre d'authentification
+    /// </summary>
     public class FrmAuthentificationController
     {
         /// <summary>

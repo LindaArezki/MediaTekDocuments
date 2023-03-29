@@ -24,7 +24,7 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Constructeur : création du contrôleur lié à ce formulaire
         /// </summary>
-        internal FrmMediatek()
+        public FrmMediatek()
         {
             InitializeComponent();
             this.controller = new FrmMediatekController();
@@ -38,7 +38,7 @@ namespace MediaTekDocuments.view
         }
        
         /// Dès l'ouverture de l'application la vue d'alerte de fin d'abonnements s'ouvre
-        /// </summary>
+        
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FrmMediatek_Shown(object sender, EventArgs e)

@@ -13,11 +13,14 @@ using MediaTekDocuments.model;
 
 namespace MediaTekDocuments.view
 {
+    /// <summary>
+    /// Fenêtre d'alerte des abonnements expirant dans 30 jours
+    /// </summary>
     public partial class FrmAlerteAbonnement : Form
     {
         private readonly BindingSource bdgAbonnement = new BindingSource();
 
-        private readonly List<AbonnementFin> lesabonnements = new List<AbonnementFin>();
+        private readonly List<AbonnementFin> lesabonnements;
 
 
         /// <summary>

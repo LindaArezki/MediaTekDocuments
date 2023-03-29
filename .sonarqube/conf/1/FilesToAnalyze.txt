@@ -1,0 +1,10 @@
+﻿C:\MediaTekDocuments\MediaTekDocumentsTests1\controller\FrmAuthentificationControllerTests.cs
+C:\MediaTekDocuments\MediaTekDocumentsTests1\controller\FrmMediatekControllerTests.cs
+C:\MediaTekDocuments\MediaTekDocumentsTests1\Properties\AssemblyInfo.cs
+C:\MediaTekDocuments\packages\MSTest.TestAdapter.2.1.1\build\_common\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\MediaTekDocuments\packages\MSTest.TestAdapter.2.1.1\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\MediaTekDocuments\packages\MSTest.TestAdapter.2.1.1\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\MediaTekDocuments\packages\MSTest.TestAdapter.2.1.1\build\_common\fr\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\MediaTekDocuments\packages\MSTest.TestAdapter.2.1.1\build\_common\fr\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\MediaTekDocuments\packages\MSTest.TestAdapter.2.1.1\build\_common\fr\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\MediaTekDocuments\MediaTekDocumentsTests1\packages.config

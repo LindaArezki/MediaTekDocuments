@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace MediaTekDocuments.view
 {
+    /// <summary>
+    /// Fenêtre d'authentification
+    /// </summary>
     public partial class FrmAuthentification : Form
     {
         private readonly FrmAuthentificationController controller; 
@@ -59,7 +62,8 @@ namespace MediaTekDocuments.view
                         }
                         else
                         {
-                        MessageBox.Show("Vous ne pouvez pas vous connecter, vous n'avez pas accès à cette application");
+                            MessageBox.Show("Vous ne pouvez pas vous connecter, vous n'avez pas accès à cette application");
+                            this.Close();
                         }
                     }
 

@@ -1,7 +1,7 @@
 ﻿
 namespace MediaTekDocuments.view
 {
-    partial class FrmMediatek
+    public partial class FrmMediatek
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

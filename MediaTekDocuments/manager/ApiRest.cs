@@ -2,6 +2,10 @@
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 
+/// <summary>
+/// Contient la classe d'accès aux données 
+/// Contient la classe d'accès aux données 
+/// </summary>
 namespace MediaTekDocuments.manager
 {
     /// <summary>

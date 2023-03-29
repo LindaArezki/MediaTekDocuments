@@ -117,9 +117,9 @@ namespace MediaTekDocuments.controller
 
         /// <summary>
         /// récupère les commandes d'un document
-        /// </summary
         /// <param name="idDocument">id du document concerné</param>
         /// <returns>Liste d'objets Commandesdocument</returns>
+        /// </summary>
         public List<CommandesDocument> GetCommandesDocument(string idDocument)
         {
             return access.GetCommandesDocument(idDocument);
@@ -127,7 +127,7 @@ namespace MediaTekDocuments.controller
 
         /// <summary>
         /// récupère les abonnement
-        /// </summary
+        /// </summary>
         /// <param name="idDocument">id du document concerné</param>
         /// <returns>Liste d'objets Commandesdocument</returns>
         public List<Abonnement> GetAbonnement(string idDocument)
@@ -138,7 +138,7 @@ namespace MediaTekDocuments.controller
 
         /// <summary>
         /// récupère les abonnements qui se termine
-        /// </summary
+        /// </summary>
         /// <returns>Liste d'objets AbonnementFin</returns>
         public List<AbonnementFin> GetAbonnementFin()
         {
@@ -183,7 +183,7 @@ namespace MediaTekDocuments.controller
 
         /// <summary>
         /// supprime une commande 
-        /// </summary
+        /// </summary>
         /// <param name="Id">id du document concerné</param>
         /// <returns>Liste d'objets Commandesdocument</returns>
         public bool SupprimerCommande(string Id)
@@ -197,7 +197,7 @@ namespace MediaTekDocuments.controller
 
         /// <summary>
         /// modifie une commande 
-        /// </summary
+        /// </summary>
         /// <param name="Id">le suivi à modifier</param>
         /// <param name="nbExemplaire"> le nombre d'exemplaire à insérer</param>
         /// <param name="idLivreDvd">l'id du document à insérer</param>
