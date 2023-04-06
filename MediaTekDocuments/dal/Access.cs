@@ -27,7 +27,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// adresse de l'API
         /// </summary>
-        private const string uriapi = "http://localhost/rest_mediatekdocuments/";
+        private const string uriapi = "http://vmapi3.francecentral.cloudapp.azure.com/rest_mediatekdocuments/";
         /// <summary>
         /// adresse de l'API
         /// </summary>
